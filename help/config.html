@@ -1,0 +1,241 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">	
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+<tr>
+	<td colspan="2" bgcolor="#ccccff" class="TableHeadingColor" align="center"><h1>SAM Configuration</h1></td>
+</tr>
+<tr>
+	<td colspan="2" class="TableRowColor">
+	<font size="+1">
+	Configuration is broken into 2 parts:
+	</font>
+	<ul>
+		<li><a href="#global">Global Configuration</a></li>
+		<li><a href="#database">Database Configuration</a></li>
+	</ul>
+	<br><br>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" bgcolor="#eeeeff" class="TableSubHeadingColor" width="220" valign="top">
+	<a name="global"><font size="+1"><b>SAM Global Configuration</b></font></a>
+	&nbsp;&nbsp;&nbsp;(<a href="../conf/sam.properties">conf/sam.properties</a>)</td>
+</tr>
+<tr>
+	<td colspan="2" class="TableRowColor" width="750" valign="top">
+	<font class="small">
+	This configuration file is responsible for the global settings within SAM.  It contains various 
+	information	regarding system-wide settings.  These values do not have to be wrapped in quotes.  The
+	format of the settings file is quite simple; it uses "key=value" pairs.  	
+	<hr>
+	Below is a table of fields and explanations for each field of the file.  Though you can edit the file
+	manually; it is not recommended.
+	</font>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" class="TableRowColor">
+	<table border="1" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td bgcolor="#ccccff" class="TableHeadingColor" align="center" width="220"><h1>Field</h1></td>
+		<td bgcolor="#ccccff" class="TableHeadingColor" align="center" width="750"><h1>Definition/Explanation</h1></td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">email.from</td>
+		<td class="TableRowColor">The email address that the alert email will appear to come from.</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">LogFileLogger.LogFile</td>
+		<td class="TableRowColor">The path (can be absolute or relative to the sam directory) where
+		the log file resides.</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">email.host</td>
+		<td class="TableRowColor">The outgoing SMTP server to be used to transport the email alert.</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">email.to</td>
+		<td class="TableRowColor">The email address of the user that the alert email is destined for.</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">AttackColumns</td>
+		<td class="TableRowColor">A comma separated list of visible columns (this list is an enumeration of
+		fields, rather than the field names).  It is not recommended that you alter this manually as you 
+		might cause undesirable behavior from the application.  There is a GUI interface inside of the
+		application to configure this for you; using column names rather than the enumeration values.</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">alertlevel.medium</td>
+		<td class="TableRowColor">This is a numerical field that represents the threshhold for the medium
+		alert level (yellow traffic light status).  The idea is that when the number of alerts (in the past
+		five minutes) is equal to or above this value (but less than the alertlevel.high threshhold), the
+		alert level is then set to medium, and the traffic light will flash yellow.</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">DatabaseUID</td>
+		<td class="TableRowColor">This setting has little impact on the application, it is merely used to
+		keep track of the last used configuration (so it is selected when you open SAM).</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">Lookup-Threshhold</td>
+		<td class="TableRowColor">This is a (decimal value between 0.0 and 1.0) rate that determines
+		when the lookup will stop looking up host names.  This is to keep the interface from locking up
+		due to network based errors.  The reason for this is that Windows based networking is vastly 
+		slower at looking up hosts, and timing out during a lookup.  The application now keeps track
+		of the number of successful host lookups, and unsuccessful host lookups and uses this information
+		to calculate the "success rate".  If the success rate drops below the user defined threshhold, then
+		lookups will stop happening altogether.  
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">DisableLookup</td>
+		<td class="TableRowColor">This feature was also inspired by Windows based networking.  Due to the
+		length of time that windows applications take to lookup hosts, I added this feature.  If it is set
+		to false, then the application will attempt to lookup all hostnames (from IP addresses) when the
+		application begins; for each attack in the last hour; though it does now keep a cache of lookups.
+		If the host is not in the cache and DisableLookup is set to false, then a lookup is performed.  If
+		the host is not in the cache and DisableLookup is set to true, then no lookup is performed (unless
+		a lookup is forced, there are features within SAM that allow you to bypass the "DisableLookup"
+		system setting).
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">alertlevel.high</td>
+		<td class="TableRowColor">This is a numerical field that represents the threshhold for the medium
+		alert level (red traffic light status).  The idea is that when the number of alerts (in the past
+		five minutes) is equal to or above this value, the alert level is then set to high, and the 
+		traffic light will flash red.</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">mainpanel.refresh</td>
+		<td class="TableRowColor">This is the amount of time (in minutes) between a refresh of data.
+		Data included here is the number of attacks in the last 5, 15, 30, 45, and 60 minutes; Top
+		Attack Types in the last 24 hours, Top Attackers in the past 24 hours, and the last 60 minutes
+		of attacks (various information about these attacks; for instance: sensor interface, source ip,
+		destination ip, timestamp on the attack, attack type, etc).  
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">DatabaseType</td>
+		<td class="TableRowColor">Currently this is either "PostgreSQL" or "MySQL".  This is more
+		important during runtime than anything else; it is actually to keep track of the current
+		database connection type.
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">email.active</td>
+		<td class="TableRowColor">This is either "true" or "false".  If it is true, then whenever the
+		alert level jumps up to high, an email is sent to the address specified by "email.to" using
+		the server "email.host" appearing to be from "email.from" (unless an exception occurs).
+		</td>
+	</tr>
+<!--
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top"></td>
+		<td class="TableRowColor"></td>
+	</tr>
+-->				
+	</table>
+	<br><br>
+	</td>
+</tr>
+<tr>
+	<td colspan="2" bgcolor="#eeeeff" class="TableSubHeadingColor">
+	<a name="database"><font size="+1"><b>SAM Database Configurations</b></font></a>
+	&nbsp;&nbsp;&nbsp;(<a href="../conf/db/">conf/db/*</a>)</td>	
+</tr>
+<tr>
+	<td colspan="2" class="TableRowColor" width="750" valign="top">
+	<font class="small">
+	Any file that is within the database configuration (<a href="../conf/db">conf/db</a>) folder is
+	considered to be a "Database Configuration File".  Don't go storing just any files in there
+	(they will be overwritten occasionally).  	
+	</td>
+</tr>
+<tr>
+	<td><b>Sample Configuration File</b>
+	
+	<pre style="margin: 0px; border:1px dotted;">
+<font color="#ff3333">#############################################
+#     Sample Configuraton File
+#############################################</font>
+<font color="#22aa22">database.uid=Snort IDS Sensor 1
+database.type=PostgreSQL
+driver.classname=org.postgresql.Driver
+database.url=jdbc:postgresql://snort-ids01:5432/snort
+database.username=snortuser
+database.password=</font></pre>	
+	</font>
+	</td>
+</tr>	
+<tr>
+	<td><br></td>
+</tr>
+<tr>
+	<td class="TableRowColor">
+	<table border="1" cellspacing="0" cellpadding="0" width="100%">
+	<tr>
+		<td bgcolor="#ccccff" class="TableHeadingColor" align="center" width="220"><h1>Field</h1></td>
+		<td bgcolor="#ccccff" class="TableHeadingColor" align="center" width="750"><h1>Definition/Explanation</h1></td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">database.uid</td>
+		<td class="TableRowColor">
+		This is a unique Identifier that is used merely to depict the database
+		connection.  It is the name that is displayed in the database select box in the database 
+		login window.  
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">database.type</td>
+		<td class="TableRowColor">
+		This field depicts the type of database connection that the configuration is for; currently the
+		only supported database types are: "MySQL" and "PostgreSQL".
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">driver.classname</td>
+		<td class="TableRowColor">
+		This is the driver type that accompanies the database.type field.  If your database is a MySQL
+		database, then this value should be "org.gjt.mm.mysql.Driver", if it is a PostgreSQL database
+		then this value should be "org.postgresql.Driver".
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">database.url</td>
+		<td class="TableRowColor">
+		This is a url that tells how to connect to your snort database.  It will be of the form
+		<br><font color="#333399">jdbc:[database_type]://[database_server]:[database_port]/[database_name]</font>
+		<br>
+		<b>JDBC URL Parameters</b>:
+		<ul style="margin-top:0px;">
+			<li>[database_type] will be either "postgresql" or "mysql" (depending on what type of
+			database you are using).  The parameter [database_server] can be either a friendly name, or the
+			actual IP address of the database server running snort that you are trying to connect to.</li>
+			<li>[database_port] is the port that the database server is running it's database on
+			(typically this is 5432 for postgresql and 3306 for mysql).</li>
+			<li>[database_name]This is the name of the snort database (typically it is just "snort").</li>
+		</ul>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">database.username</td>
+		<td class="TableRowColor">
+		The username that you will be using to connect to the snort database.  
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#eeeeff" class="TableSubHeadingColor" valign="top">database.password</td>
+		<td class="TableRowColor">
+		The password for the username that you will be using to connect to the snort database.
+		</td>
+	</tr>
+	</table>	
+	</td>		
+</tr>
+</table>
+</body>
+</html>

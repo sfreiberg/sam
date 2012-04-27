@@ -1,0 +1,148 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body>
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr>
+	<td bgcolor="#ccccff" class="TableHeadingColor" align="center"><h1>Running SAM</h1></td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor">
+	<font size="+1">Platforms</font>
+	<ul style="margin-top:0px;">
+		<li><a href="#linux">Linux</a></li>
+		<li><a href="#windows">Windows</a></li>
+		<li><a href="#mac">Mac</a></li>
+		<li><a href="#other">Other Platforms</a></li>
+	</td>
+</tr>
+<tr>
+	<td><br></td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>System Requirements</b></td>
+</tr>
+<tr>
+	<td>
+		<b>Basic Requirements (all distributions)</b>
+		<ul style="margin-top:0px">
+			<li><a href="../conf/sam.properties">conf/sam.properties</a> must be configured</li>
+			<li>1 or more database configuration files (in <a href="../conf/db/">conf/db/</a>) must
+			be configured.</li>
+		</ul>		
+		<b>Binary Distribution Requirements</b>
+		<ul style="margin-top:0px">
+			<li>JRE 1.4.2 or greater (Java Runtime Environment)
+			<a href="http://www.java.com" target="_new">download</a></li>
+			<li>"java" command must be in your path</li>
+		</ul>
+		<b>Source Distribution Requirements</b>
+		<ul style="margin-top:0px">
+			<li>J2SE 1.4.2 or greater (Java 2 Standard Edition)
+			<a href="http://java.sun.com/j2se/1.4.2/download.html" target="_new">download</a></li>
+			<li>"java" and "javac" commands must both be in your path.</li>			
+		</ul>
+		<br>
+	</td>
+</tr>
+<!--	Linux Directions		-->
+<tr>
+	<td bgcolor="#ccccff" class="TableHeadingColor"><h1><a name="linux">Linux</a></h1></td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>Running SAM from binaries</b></td>
+</tr>
+<tr>
+	<td>
+	Ensure that the System Requirements above are met, if this is true, and you have configured
+	the configuration files correctly, then you can run SAM.  If you are running SAM from the 
+	binary distribution then all you have to do is open a terminal and cd to the directory 
+	that sam was unzipped into.  Once you are in there (assuming all criteria above are met), 
+	you can execute sam by typing the following command (shown in red):
+	<br>&gt;<font color="#ff3333">java -jar sam.jar</font><br><br>
+	</td>
+</tr>	
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>Working  from source</b></td>
+</tr>
+<tr>
+	<td>
+	If you are Working  from source, then you will have to compile the java files.  Some tips to help:
+	1. The main package is "com.allthingscompute.sam".  2.	main method is within the class 
+	com.allthingscompute.sam.Sam 3.  Several essential packages (jar files) need to be added into the
+	compilation, are located in the "lib" directory.  If you really would like to work from source, 
+	but are having trouble getting javac to compile the project, then contact Eric Internicola (see 
+	<a href="developers.html">developers section</a>), and a Makefile (and/or set of cmd files can
+	be provided to you.
+	<br><br>
+	</td>
+</tr>
+<!--	Windows Directions		-->
+<tr>
+	<td bgcolor="#ccccff" class="TableHeadingColor"><h1><a name="windows">Windows</a></h1></td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>Running SAM from binaries</b><br>
+</tr>
+<tr>
+	<td>Directions here are the same as for <a href="#linux">linux</a><br><br></td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>Working  from source</b></td>
+</tr>
+<tr>
+	<td>Directions here are the same as for <a href="#linux">linux</a><br><br></td>
+</tr>
+<!--	MAC Directions		-->
+<tr>
+	<td bgcolor="#ccccff" class="TableHeadingColor"><h1><a name="mac">Mac</a></h1></td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>Running SAM from binaries</b><br>
+</tr>
+<tr>
+	<td>
+	SAM has not yet been formally tested on a MAC, if you are interested in getting it to
+	work and contributing to this document, please contact Eric Internicola
+	(see <a href="developers.html">developers section</a>).<br><br>
+	</td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>Working  from source</b></td>
+</tr>
+<tr>
+	<td>
+	SAM has not yet been formally tested on a MAC, if you are interested in getting it to
+	work and contributing to this document, please contact Eric Internicola
+	(see <a href="developers.html">developers section</a>).<br><br>
+	</td>
+</tr>
+<tr>
+	<td bgcolor="#ccccff" class="TableHeadingColor"><h1><a name="other">Other Platforms</a></h1></td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>Running SAM from binaries</b><br>
+</tr>
+<tr>
+	<td>
+	SAM has not yet been formally tested on any other platforms than the ones listed in this
+	document.  If you are interested in getting it to work and testing it on another platform
+	to contribute to this document, please contact Eric Internicola
+	(see <a href="developers.html">developers section</a>).<br><br>
+	</td>
+</tr>
+<tr>
+	<td bgcolor="#eeeeff" class="TableSubHeadingColor"><b>Working  from source</b></td>
+</tr>
+<tr>
+	<td>
+	SAM has not yet been formally tested on any other platforms than the ones listed in this
+	document.  If you are interested in getting it to work and testing it on another platform
+	to contribute to this document, please contact Eric Internicola
+	(see <a href="developers.html">developers section</a>).<br><br>		
+	</td>
+</tr>
+</table>
+</body>
+</html>	

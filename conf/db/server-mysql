@@ -1,0 +1,6 @@
+database.uid=MySQL-Server
+database.type=MySQL
+driver.classname=org.gjt.mm.mysql.Driver
+database.url=jdbc:mysql://10.100.1.54:3306/snort
+database.username=root
+database.password=heykoolaid!

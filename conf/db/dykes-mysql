@@ -1,0 +1,6 @@
+database.uid=Dykes Snort Box
+database.type=MySQL
+driver.classname=org.gjt.mm.mysql.Driver
+database.url=jdbc:mysql://128.113.157.159:3306/snort
+database.username=snortuser
+database.password=

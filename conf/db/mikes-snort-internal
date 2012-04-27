@@ -1,0 +1,6 @@
+database.uid=Mikey-Internal-Snort
+database.type=PostgreSQL
+driver.classname=org.postgresql.Driver
+database.url=jdbc:postgresql://expired:5432/snort
+database.username=postgres
+database.password=

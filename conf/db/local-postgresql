@@ -1,0 +1,6 @@
+database.uid=Mike's House
+database.type=PostgreSQL
+driver.classname=org.postgresql.Driver
+database.url=jdbc:postgresql://10.100.1.54:5432/snort
+database.username=postgres
+database.password=picodegallo
